@@ -1,0 +1,31 @@
+{
+  "name": "start-project",
+  "version": "1.0.0",
+  "description": "start-project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    ""
+  ],
+  "author": "Phelipe Mizerani",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "consign": "^0.1.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
+    "express-session": "^1.14.1",
+    "express-validator": "^2.21.0",
+    "helmet": "^2.3.0",
+    "method-override": "^2.3.6",
+    "moment": "^2.15.2",
+    "mysql": "^2.13.0",
+    "nodemailer": "^2.6.4",
+    "request": "^2.81.0",
+    "sequelize": "^3.24.5",
+    "winston": "^2.2.0"
+  }
+}
