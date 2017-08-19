@@ -3,7 +3,7 @@
 
 ## Instruções
 ### Clone o repositório
-- git clone ...
+- git clone https://github.com/pmizerani/start-project.git
 
 ### Entre na pasta e execute
 - npm install
