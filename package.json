@@ -1,0 +1,21 @@
+{
+  "name": "start-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha ./test/**/*.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "consign": "^0.1.6",
+    "express": "^4.15.4",
+    "jwt-simple": "^0.5.1",
+    "knex": "^0.13.0",
+    "moment": "^2.18.1",
+    "mysql": "^2.14.1"
+  }
+}
