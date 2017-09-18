@@ -12,6 +12,7 @@ const consign = require("consign");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(output);
 app.use(cors);
+app.use(express.static('./public'));
 
 // Routes
 
