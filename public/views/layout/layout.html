@@ -1,0 +1,22 @@
+<div class="wrapper" ng-controller="GeneralController">
+
+    <!--MENU-->
+    <div ui-view="sidebar"></div>
+
+    <div class="main-panel">
+
+        <!--TOP MENU-->
+        <div ui-view="header"></div>
+
+        <div class="content">
+
+            <div ui-view></div>
+
+        </div>
+
+        <!--FOOTER-->
+        <div ui-view="footer"></div>
+
+    </div>
+
+</div>

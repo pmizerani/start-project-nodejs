@@ -8,7 +8,6 @@ const knex = require('knex')({
         user : username,
         password : password,
         database : database,
-        socketPath: socketPath,
         debug: debug
     }
 });

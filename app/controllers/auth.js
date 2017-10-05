@@ -1,16 +1,16 @@
-const Users = require('../models/users');
+const User = require('../models/user');
 const valid = require('../helpers/validation');
 const encrypt = require('../helpers/utils').encrypt;
 const jwt = require('../classes/jwt');
 
-class Auth {
+class AuthController {
 
     /**
      * auth
      * @param req
      * @param res
      * @method POST
-     * route /auth
+     * route /api/auth
      */
     auth(req, res) {
 
@@ -25,7 +25,7 @@ class Auth {
             return;
         }
 
-        Users.findByUserCredentials({
+        User.findByUserCredentials({
             email, password: encrypt(password)
         }).then(result => {
 
@@ -38,6 +38,7 @@ class Auth {
             
             const user = result[0];
             const token = jwt.create(user);
+            // res.set('Authorization', 'Bearer ' + token);
             res.sendJSON({ token });
 
         }).catch(err => {
@@ -48,24 +49,31 @@ class Auth {
     }//end auth
 
     /**
-     * authWithHash
+     * authAdmin
      * @param req
      * @param res
      * @method POST
-     * route /auth_with_hash
+     * route /api/auth/admin
      */
-    authWithHash(req, res) {
-        const { hash } = req.body || {};
+    authAdmin(req, res) {
 
-        if ( ! hash) {
-            res.badRequest('Hash is required');
+        const errors = [];
+        const { email, password } = req.body || {};
+
+        if ( ! valid.email(email)) errors.push('E-mail address is not valid');
+        if ( ! password) errors.push('Password is required');
+
+        if (errors.length > 0) {
+            res.badRequest(errors.join('\n'));
             return;
         }
 
-        Users.findByCustomerHash(hash).then(result => {
+        User.findByUserCredentialsAdmin({
+            email, password: encrypt(password)
+        }).then(result => {
 
             const logged = result.length > 0;
-            
+
             if ( ! logged) {
                 res.unauthorized();
                 return;
@@ -73,33 +81,16 @@ class Auth {
 
             const user = result[0];
             const token = jwt.create(user);
+            // res.set('Authorization', 'Bearer ' + token);
             res.sendJSON({ token });
 
         }).catch(err => {
             console.log(err);
-            res.internalError();
+            res.internalError(err);
         });
 
-    }//end authWithHash
+    }//end authAdmin
 
-    /**
-     * example
-     * @param req
-     * @param res
-     * @method GET
-     * route /example
-     */
-    example(req, res) {
-
-        let dataResponse = {
-            status: 200,
-            message: "Route example",
-            data: []
-        }
-
-        res.sendJSON(dataResponse);
-
-    }//end example
 }
 
-module.exports = new Auth();
+module.exports = new AuthController();

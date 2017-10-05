@@ -6,21 +6,24 @@ const config = require('./config');
 const bodyParser = require('body-parser');
 const cors = require('./app/middlewares/cors.js');
 const output = require('./app/middlewares/output');
-const consign = require("consign");
+const consign = require('consign');
+const http = require('http');
+const path = require('path');
 
 // Middlewares
-app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('./public'));
 app.use(output);
 app.use(cors);
-app.use(express.static('./public'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Routes
 
 //loading dependencies
 consign({cwd: 'app', verbose: false})
-    .include("models")
-    .then("controllers")
-    .then("routes")
+    .include('routes')
     .into(app);
 
 // Multicore
@@ -29,7 +32,7 @@ if (cluster.isMaster) {
         cluster.fork();
     }
 } else {
-    app.listen(config.port, function () {
+    http.createServer(app).listen(config.port, function() {
         console.log(`Middleware listening on port ${config.port}!`);
     });
 }

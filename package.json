@@ -1,5 +1,5 @@
 {
-  "name": "start-project",
+  "name": "api-ovulo-doacao",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -10,12 +10,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular-toastr": "^2.1.1",
     "body-parser": "^1.17.2",
     "consign": "^0.1.6",
     "express": "^4.15.4",
+    "formidable": "^1.1.1",
+    "jsonwebtoken": "^8.0.1",
     "jwt-simple": "^0.5.1",
     "knex": "^0.13.0",
     "moment": "^2.18.1",
-    "mysql": "^2.14.1"
+    "mysql": "^2.14.1",
+    "satellizer": "^0.15.5"
   }
 }

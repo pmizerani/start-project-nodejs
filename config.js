@@ -4,7 +4,7 @@ const databaseCredentials = {
         hostname: '127.0.0.1',
         username: 'root',
         password: 'root',
-        database: 'database',
+        database: 'ovulo_doacao',
         socketPath: 'null',
         debug: false,
     },
