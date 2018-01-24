@@ -6,7 +6,7 @@ module.exports = (app) => {
     app.route("/api/auth")
         .post(AuthController.auth);
 
-    app.route("/api/auth/admin")
-        .post(AuthController.authAdmin);
+	app.route("/api/validatetoken")
+        .get(jwt.ensureAuthentication);
 
 };

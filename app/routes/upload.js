@@ -1,9 +1,9 @@
-const UploadController = require("../controllers/upload");
+const UploadController = require("../controllers/uploadController");
 const jwt = require("../classes/jwt");
 
 module.exports = (app) => {
 
     app.route("/api/upload")
-        .post(jwt.ensureAuth, UploadController.upload);
+        .post(jwt.ensureAuthentication, UploadController.upload);
 
 };

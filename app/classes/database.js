@@ -8,7 +8,8 @@ const knex = require('knex')({
         user : username,
         password : password,
         database : database,
-        debug: debug
+        debug: debug,
+		timezone: '+00:00'
     }
 });
 

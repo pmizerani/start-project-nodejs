@@ -1,11 +1,10 @@
 {
-  "name": "api-ovulo-doacao",
+  "name": "start-project",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "mocha ./test/**/*.js"
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +12,7 @@
     "angular-toastr": "^2.1.1",
     "body-parser": "^1.17.2",
     "consign": "^0.1.6",
+    "cors": "^2.8.4",
     "express": "^4.15.4",
     "formidable": "^1.1.1",
     "jsonwebtoken": "^8.0.1",
