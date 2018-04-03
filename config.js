@@ -1,26 +1,26 @@
-// Database credential for each enviroment
-const databaseCredentials = {
+// Database credential for each enviroment MySQL
+const databaseCredentialsMySQL = {
 	local: {
-		hostname: '127.0.0.1',
-		username: 'root',
-		password: 'root',
-		database: 'database',
+        hostname: '127.0.0.1',
+        username: 'database-user',
+        password: 'database-pass',
+        database: 'database-name',
 		socketPath: 'null',
 		debug: false,
 	},
 	test: {
-		hostname: '127.0.0.1',
-		username: 'root',
-		password: 'root',
-		database: 'database',
+        hostname: '127.0.0.1',
+        username: 'database-user',
+        password: 'database-pass',
+        database: 'database-name',
 		socketPath: null,
 		debug: false,
 	},
 	production: {
 		hostname: '127.0.0.1',
-		username: 'root',
-		password: 'root',
-		database: 'database',
+		username: 'database-user',
+		password: 'database-pass',
+		database: 'database-name',
 		socketPath: null,
 		debug: false,
 	}
@@ -37,12 +37,12 @@ const env = process.env.NODE_ENV || 'local';
 
 module.exports = {
 	database: {
-		hostname: databaseCredentials[env]['hostname'],
-		username: databaseCredentials[env]['username'],
-		password: databaseCredentials[env]['password'],
-		database: databaseCredentials[env]['database'],
-		socketPath: databaseCredentials[env]['socketPath'],
-		debug: databaseCredentials[env]['debug']
+		hostname: databaseCredentialsMySQL[env]['hostname'],
+		username: databaseCredentialsMySQL[env]['username'],
+		password: databaseCredentialsMySQL[env]['password'],
+		database: databaseCredentialsMySQL[env]['database'],
+		socketPath: databaseCredentialsMySQL[env]['socketPath'],
+		debug: databaseCredentialsMySQL[env]['debug']
 	},
 	port: ports[env]
 };

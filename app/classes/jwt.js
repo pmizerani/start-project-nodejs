@@ -1,17 +1,18 @@
 const jwt = require('jwt-simple');
 const moment = require('moment');
-const SECRET = 'escreva-algum-hash-aqui';
+const SECRET = 'definir-secret';
 
 class JWT {
 
     /**
-     * create
-     * @param user
+     * criar
+     * @param usuario
      * @returns {String}
      */
-    create(user) {
+    criar(usuario) {
+
         const payload = {
-            sub: user,
+            sub: usuario,
             iat: moment().unix(),
             exp: moment().add(3, 'days').unix()
         };
@@ -42,12 +43,8 @@ class JWT {
                 return;
             }
 
-            if("/api/validatetoken" === req.originalUrl) {
-                res.sendJSON({token});
-            } else {
-                req.authenticatedUser = payload.sub;
-                next();
-            }
+            req.usuarioAutenticado = payload.sub;
+            next();
 
         } catch (err) {
             res.unauthorized(); 
