@@ -19,13 +19,13 @@ class AuthController {
     }
 
     /**
-	 * auth
+	 * autenticacao
 	 * @param req
 	 * @param res
 	 * @method POST
-	 * route /api/auth
+	 * route /api/autenticacao
 	 */
-	async auth(req, res) {
+	async autenticacao(req, res) {
 
 		const errors = [];
 		const {tx_email, tx_senha} = req.body || {};
@@ -58,7 +58,7 @@ class AuthController {
 			res.internalError(err);
 		}
 
-	}//end auth
+	}//end autenticacao
 
     /**
 	 * validarToken

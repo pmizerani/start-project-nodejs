@@ -1,8 +1,8 @@
 const crypto = require('crypto');
 
 const ALGORITHM = 'aes-256-ctr';
-const HASH = '8fa4125de297972cc1a36921d5c79249'; //TODO alterar hash
-const IV = '5d54849c07cec0fe'; //TODO alterar hash
+const HASH = 'criar-hash'; //TODO alterar hash
+const IV = 'criar-hash-com-16-caracteres'; //TODO alterar hash
 
 class Utils {
 

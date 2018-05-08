@@ -1,29 +1,29 @@
 // Database credential for each enviroment MySQL
 const databaseCredentialsMySQL = {
-	local: {
-        hostname: '127.0.0.1',
-        username: 'database-user',
-        password: 'database-pass',
+    local: {
+        hostname: process.env.NODE_MYSQL_HOST || '127.0.0.1',
+        username: process.env.NODE_MYSQL_USER || 'user',
+        password: process.env.NODE_MYSQL_PASS || 'pass',
         database: 'database-name',
-		socketPath: 'null',
-		debug: false,
-	},
-	test: {
-        hostname: '127.0.0.1',
-        username: 'database-user',
-        password: 'database-pass',
+        socketPath: 'null',
+        debug: false,
+    },
+    test: {
+        hostname: process.env.NODE_MYSQL_HOST || '127.0.0.1',
+        username: process.env.NODE_MYSQL_USER || 'user',
+        password: process.env.NODE_MYSQL_PASS || 'pass',
         database: 'database-name',
-		socketPath: null,
-		debug: false,
-	},
-	production: {
-		hostname: '127.0.0.1',
-		username: 'database-user',
-		password: 'database-pass',
-		database: 'database-name',
-		socketPath: null,
-		debug: false,
-	}
+        socketPath: null,
+        debug: false,
+    },
+    production: {
+        hostname: process.env.NODE_MYSQL_HOST || '127.0.0.1',
+        username: process.env.NODE_MYSQL_USER || 'user',
+        password: process.env.NODE_MYSQL_PASS || 'pass',
+        database: 'database-name',
+        socketPath: null,
+        debug: false,
+    }
 }
 
 // Ports for each enviroment

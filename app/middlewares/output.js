@@ -1,6 +1,7 @@
 const Mensagens = require('../helpers/mensagens');
-const CsuLog = require('../helpers/csu_log');
-const LogDAO = require('../dao/logDAO');
+// const CSU = require('../helpers/csu');
+// const LogDAO = require('../dao/logDAO');
+const Logger = require('../helpers/logger');
 
 /**
  * output
@@ -16,6 +17,7 @@ function output(req, res, next) {
      */
     res.badRequest = function (message = Mensagens.MSG05) {
         res.status(400).send(message);
+        Logger.info(message);
     }
 
     /**
@@ -24,6 +26,7 @@ function output(req, res, next) {
      */
     res.unauthorized = function (message = Mensagens.MSG06) {
         res.status(401).send([message]);
+        Logger.info(message);
     }
 
     /**
@@ -32,6 +35,7 @@ function output(req, res, next) {
      */
     res.denied = function (message = Mensagens.MSG12) {
         res.status(403).send([message]);
+        Logger.info(message);
     }
 
     /**
@@ -40,6 +44,7 @@ function output(req, res, next) {
      */
     res.notFound = function (message = Mensagens.MSG09) {
         res.status(404).send([message]);
+        Logger.info(message);
     }
 
     /**
@@ -50,9 +55,27 @@ function output(req, res, next) {
 
         console.log(message);
 
-        if (message.code && 'ER_ROW_IS_REFERENCED_2' === message.code) res.status(403).send([Mensagens.MSG10]);
-        else if (message.code && 'ER_DUP_ENTRY' === message.code) res.status(403).send([Mensagens.MSG13]);
-        else res.status(500).send([message.toString()]);
+        if(message.code && 'ER_ROW_IS_REFERENCED_2' === message.code) {
+
+            res.status(403).send([Mensagens.MSG10]);
+            Logger.info(Mensagens.MSG10 + '  --  ' + message.toString());
+
+        } else if(message.code && 'ER_DUP_ENTRY' === message.code) {
+
+            res.status(403).send([Mensagens.MSG13]);
+            Logger.info(Mensagens.MSG13 + '  --  ' + message.toString());
+
+        } else if(message.code && 'ER_NO_REFERENCED_ROW_2' === message.code) {
+
+            res.status(403).send([Mensagens.MSG58]);
+            Logger.info(Mensagens.MSG58 + '  --  ' + message.toString());
+
+        } else {
+
+            res.status(500).send([message.toString()]);
+            Logger.info(message.toString());
+
+        }
 
     }
 
@@ -100,7 +123,7 @@ function output(req, res, next) {
         //         }
         //
         //         //Busca nome do CSU
-        //         const csu = await CsuLog.buscarCSU(res.req.url.split('/')[2]);
+        //         const csu = await CSU.buscarCSU(res.req.url.split('/')[2]);
         //
         //         //Cria LOG
         //         await LogDAO.inserir({
@@ -114,7 +137,7 @@ function output(req, res, next) {
         //         await LogDAO.inserir({
         //             id_usuario: res.req.usuarioAutenticado.id_usuario,
         //             dt_criacao: new Date(),
-        //             tx_log: `${Mensagens.MSG54} ${await CsuLog.buscarCSU(res.req.url.split('/')[2])} - ${JSON.stringify(err)}`
+        //             tx_log: `${Mensagens.MSG54} ${await CSU.buscarCSU(res.req.url.split('/')[2])} - ${JSON.stringify(err)}`
         //         });
         //     }
         // }

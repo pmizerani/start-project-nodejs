@@ -22,7 +22,7 @@ class TesteRepository {
                 ];
 
                 const itemCriado = await trx
-                    .insert({nome: 'Junior bostinha'}, 'id')
+                    .insert({nome: 'Nome completo'}, 'id')
                     .into('teste1');
 
                 await Promise.all(itens.map(async function(item) {

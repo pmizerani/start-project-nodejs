@@ -32,7 +32,7 @@ class Model {
 
                 let campo = Object.keys(element);
                 if(1 < where.length) where += ` AND `;
-                if(isNaN(parseInt(element[campo[0]]))) {
+                if(!isFinite(element[campo[0]]) || isNaN(parseInt(element[campo[0]]))) {
                     where += ` ${campo[0]} LIKE ? `;
                     valores.push(`%${element[campo[0]]}%`);
                 } else {
@@ -123,7 +123,7 @@ class Model {
 
                 let campo = Object.keys(element);
                 if(1 < where.length) where += ` AND `;
-                if(isNaN(parseInt(element[campo[0]]))) {
+                if(!isFinite(element[campo[0]]) || isNaN(parseInt(element[campo[0]]))) {
                     where += ` ${campo[0]} LIKE ? `;
                     valores.push(`%${element[campo[0]]}%`);
                 } else {

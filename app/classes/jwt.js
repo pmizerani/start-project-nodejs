@@ -14,7 +14,7 @@ class JWT {
         const payload = {
             sub: usuario,
             iat: moment().unix(),
-            exp: moment().add(3, 'days').unix()
+            exp: moment().add(3, 'days').unix() //validade em dias do token
         };
 
         return jwt.encode(payload, SECRET);
